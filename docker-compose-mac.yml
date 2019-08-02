@@ -17,16 +17,12 @@ services:
       - DEBUG=${DEBUG- }
       - DATA_DIR=${DATA_DIR- }
       - PORT_WEB_UI=${PORT_WEB_UI- }
-      - LAMBDA_EXECUTOR=docker
-      - LOCALSTACK_HOST=localstack
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
       - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
       - DEFAULT_REGION=us-east-1
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
-      - "//var/run/docker.sock:/var/run/docker.sock"
-      - "localstack-vol:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/private${TMPDIR}:/tmp/localstack"
     depends_on:
       - mongo
-
-volumes:
-  localstack-vol: #declare the volume for the compose file
