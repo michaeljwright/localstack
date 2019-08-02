@@ -13,7 +13,7 @@ services:
       - "4568-4576:4568-4576"
       - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
     environment:
-      - SERVICES=lambda,sns,sqs,apigateway
+      - SERVICES=lambda,sns,sqs,apigateway,dynamodb
       - DEBUG=${DEBUG- }
       - DATA_DIR=${DATA_DIR- }
       - PORT_WEB_UI=${PORT_WEB_UI- }
